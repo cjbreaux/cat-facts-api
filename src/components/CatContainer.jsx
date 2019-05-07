@@ -1,15 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import getCatFact from './../actions/getCatFact'
 import { requestFact } from './../actions';
+import { getCatFact } from './../actions';
+import { receiveFact } from './../actions';
 
 function CatContainer({catFact, dispatch}) {
   return(
     <div>
       <h1> hello cat </h1>
       <h2>{catFact}</h2>
-      <button onClick={getCatFact}>API CALL </button>
-      <button onClick={()=>dispatch(requestFact('this is a new one'))}>Dipatch Action </button>
+      <button onClick={()=>dispatch(getCatFact())}>API CALL </button>
+      <button onClick={()=>dispatch(receiveFact('this is a new one'))}>Test </button>
+      <button onClick={()=>dispatch(requestFact())}>Dispatch Action </button>
     </div>
   );
 }
