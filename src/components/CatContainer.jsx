@@ -12,6 +12,7 @@ function CatContainer({catFact, dispatch}) {
       <button onClick={()=>dispatch(getCatFact())}>API CALL </button>
       <button onClick={()=>dispatch(receiveFact('this is a new one'))}>Test </button>
       <button onClick={()=>dispatch(requestFact())}>Dispatch Action </button>
+      <button onClick={()=>window.responsiveVoice.speak(catFact, "UK English Male")}>Say Something</button>
     </div>
   );
 }
