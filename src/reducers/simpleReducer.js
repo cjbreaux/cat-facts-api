@@ -6,6 +6,13 @@ export default (state = initialState, action) => {
   case types.NEW_FACT:
     console.log(state);
     return state;
+  case types.REQUEST_FACT:
+    let updatedSlice = Object.assign({}, state, {
+      isFetching: true,
+      catFact: action.catFact
+    });
+    console.log(updatedSlice);
+    return updatedSlice;
   default:
    return state
  }
