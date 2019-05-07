@@ -13,6 +13,23 @@ export const receiveFact = (catFact) => ({
     catFact
   })
 
+export const catPic = (catURL) => ({
+  type: types.CAT_PIC,
+  catURL
+})
+
+export function getCatPic() {
+  return function (dispatch) {
+    return fetch('https://aws.random.cat/meow').then(
+      response => response.json(),
+      error => console.log('An error occurred', error)
+    ).then(function(json) {
+      console.log('Cat pic url', json.file)
+      dispatch(catPic(json.file));
+    })
+  }
+}
+
 
 export function getCatFact() {
   return function (dispatch) {
@@ -24,6 +41,7 @@ export function getCatFact() {
         let newFact = json.text;
         console.log(newFact);
         dispatch(receiveFact(newFact));
+        window.responsiveVoice.speak(newFact, "UK English Male");
       } else {
         console.log('Not getting any cat facts');
       }

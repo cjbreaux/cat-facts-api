@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import { requestFact } from './../actions';
 import { getCatFact } from './../actions';
 import { receiveFact } from './../actions';
+import { getCatPic } from './../actions';
 
-function CatContainer({catFact, dispatch}) {
+function CatContainer({catFact, catURL, dispatch}) {
   return(
     <div>
       <h1> hello cat </h1>
@@ -12,14 +13,17 @@ function CatContainer({catFact, dispatch}) {
       <button onClick={()=>dispatch(getCatFact())}>API CALL </button>
       <button onClick={()=>dispatch(receiveFact('this is a new one'))}>Test </button>
       <button onClick={()=>dispatch(requestFact())}>Dispatch Action </button>
-      <button onClick={()=>window.responsiveVoice.speak(catFact, "UK English Male")}>Say Something</button>
+      <button onClick={()=>dispatch(getCatPic())}>CatPicCall</button>
+      <img src={catURL}></img>
     </div>
   );
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    catFact: state.simpleReducer.catFact
+    catFact: state.simpleReducer.catFact,
+    catURL: state.simpleReducer.catURL
   }
 }
 

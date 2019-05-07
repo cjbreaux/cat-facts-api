@@ -20,6 +20,12 @@ export default (state = initialState, action) => {
     })
     console.log(updatedSlice);
     return updatedSlice;
+  case types.CAT_PIC:
+    updatedSlice = Object.assign({}, state, {
+      catURL: action.catURL
+    })
+    console.log(updatedSlice);
+    return updatedSlice;
   default:
    return state
  }
